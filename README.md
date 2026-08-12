@@ -18,9 +18,9 @@ A full-stack personal finance tracker for logging income and expenses, categoriz
 
 ## Screenshots
 
-| Dashboard                  | Transactions               |
-| -------------------------- | -------------------------- |
-| _[screenshot placeholder]_ | _[screenshot placeholder]_ |
+| Dashboard                              | Transactions                                 |
+| -------------------------------------- | -------------------------------------------- |
+| ![Dashboard](screenshot-dashboard.png) | ![Transactions](screenshot-transactions.png) |
 
 ---
 

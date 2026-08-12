@@ -1,4 +1,5 @@
 import { prisma } from "../config/db";
+import { serializeTransactions } from "../utils/serialize";
 
 function startOfMonth(date: Date): Date {
   return new Date(date.getFullYear(), date.getMonth(), 1);
@@ -114,10 +115,12 @@ export async function getMonthly(userId: string) {
 }
 
 export async function getRecent(userId: string) {
-  return prisma.transaction.findMany({
+  const transactions = await prisma.transaction.findMany({
     where: { userId },
     include: { category: true },
     orderBy: { date: "desc" },
     take: 5,
   });
+
+  return serializeTransactions(transactions);
 }

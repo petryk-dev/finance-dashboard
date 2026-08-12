@@ -1,6 +1,7 @@
 import { Prisma } from "@prisma/client";
 import { prisma } from "../config/db";
 import { NotFoundError } from "../utils/AppError";
+import { serializeTransaction, serializeTransactions } from "../utils/serialize";
 import type {
   CreateTransactionInput,
   TransactionQuery,
@@ -37,7 +38,7 @@ export async function listTransactions(userId: string, query: TransactionQuery) 
   ]);
 
   return {
-    transactions,
+    transactions: serializeTransactions(transactions),
     pagination: {
       page: query.page,
       limit: query.limit,
@@ -70,10 +71,12 @@ async function assertTransactionOwnership(userId: string, transactionId: string)
 export async function createTransaction(userId: string, input: CreateTransactionInput) {
   await assertCategoryOwnership(userId, input.categoryId);
 
-  return prisma.transaction.create({
+  const transaction = await prisma.transaction.create({
     data: { ...input, userId },
     include: { category: true },
   });
+
+  return serializeTransaction(transaction);
 }
 
 export async function updateTransaction(
@@ -87,11 +90,13 @@ export async function updateTransaction(
     await assertCategoryOwnership(userId, input.categoryId);
   }
 
-  return prisma.transaction.update({
+  const transaction = await prisma.transaction.update({
     where: { id: transactionId },
     data: input,
     include: { category: true },
   });
+
+  return serializeTransaction(transaction);
 }
 
 export async function deleteTransaction(userId: string, transactionId: string): Promise<void> {

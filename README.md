@@ -18,8 +18,8 @@ A full-stack personal finance tracker for logging income and expenses, categoriz
 
 ## Screenshots
 
-| Dashboard | Transactions |
-|---|---|
+| Dashboard                  | Transactions               |
+| -------------------------- | -------------------------- |
 | _[screenshot placeholder]_ | _[screenshot placeholder]_ |
 
 ---
@@ -39,14 +39,14 @@ A full-stack personal finance tracker for logging income and expenses, categoriz
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Frontend | Next.js 14 (App Router), TypeScript, Tailwind CSS, Recharts, React Hook Form, Zod |
-| Backend | Node.js, Express, TypeScript, Zod |
-| Database | PostgreSQL, Prisma ORM |
-| Auth | JWT (access + refresh tokens), bcrypt password hashing |
-| Deployment | Vercel (frontend), Railway (backend + Postgres) |
-| Containerization | Docker (multi-stage, non-root runtime) |
+| Layer            | Technology                                                                        |
+| ---------------- | --------------------------------------------------------------------------------- |
+| Frontend         | Next.js 14 (App Router), TypeScript, Tailwind CSS, Recharts, React Hook Form, Zod |
+| Backend          | Node.js, Express, TypeScript, Zod                                                 |
+| Database         | PostgreSQL, Prisma ORM                                                            |
+| Auth             | JWT (access + refresh tokens), bcrypt password hashing                            |
+| Deployment       | Vercel (frontend), Railway (backend + Postgres)                                   |
+| Containerization | Docker (multi-stage, non-root runtime)                                            |
 
 ---
 
@@ -144,21 +144,21 @@ password: demo123456
 
 ### Backend (`backend/.env`)
 
-| Variable | Description | Example |
-|---|---|---|
-| `PORT` | API server port | `4000` |
-| `NODE_ENV` | Runtime environment | `development` |
-| `DATABASE_URL` | PostgreSQL connection string | `postgresql://postgres:postgres@localhost:5432/finance_dashboard` |
-| `JWT_ACCESS_SECRET` | Secret for signing access tokens | _random string_ |
-| `JWT_REFRESH_SECRET` | Secret for signing refresh tokens | _random string_ |
-| `JWT_ACCESS_EXPIRES_IN` | Access token lifetime | `15m` |
-| `JWT_REFRESH_EXPIRES_IN` | Refresh token lifetime | `7d` |
-| `FRONTEND_URL` | Allowed CORS origin | `http://localhost:3000` |
+| Variable                 | Description                       | Example                                                           |
+| ------------------------ | --------------------------------- | ----------------------------------------------------------------- |
+| `PORT`                   | API server port                   | `4000`                                                            |
+| `NODE_ENV`               | Runtime environment               | `development`                                                     |
+| `DATABASE_URL`           | PostgreSQL connection string      | `postgresql://postgres:postgres@localhost:5432/finance_dashboard` |
+| `JWT_ACCESS_SECRET`      | Secret for signing access tokens  | _random string_                                                   |
+| `JWT_REFRESH_SECRET`     | Secret for signing refresh tokens | _random string_                                                   |
+| `JWT_ACCESS_EXPIRES_IN`  | Access token lifetime             | `15m`                                                             |
+| `JWT_REFRESH_EXPIRES_IN` | Refresh token lifetime            | `7d`                                                              |
+| `FRONTEND_URL`           | Allowed CORS origin               | `http://localhost:3000`                                           |
 
 ### Frontend (`frontend/.env.local`)
 
-| Variable | Description | Example |
-|---|---|---|
+| Variable              | Description                 | Example                     |
+| --------------------- | --------------------------- | --------------------------- |
 | `NEXT_PUBLIC_API_URL` | Base URL of the backend API | `http://localhost:4000/api` |
 
 No real secrets are committed anywhere in this repo — only placeholders in `.env.example` files.
@@ -167,20 +167,20 @@ No real secrets are committed anywhere in this repo — only placeholders in `.e
 
 ## API Overview
 
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/api/auth/register` | Create an account, returns tokens |
-| POST | `/api/auth/login` | Authenticate, returns tokens |
-| POST | `/api/auth/refresh` | Exchange a refresh token for a new access token |
-| POST | `/api/auth/logout` | Revoke a refresh token |
-| GET/POST | `/api/categories` | List / create categories |
-| PUT/DELETE | `/api/categories/:id` | Update / delete a category |
-| GET/POST | `/api/transactions` | List (filterable, paginated) / create transactions |
-| PUT/DELETE | `/api/transactions/:id` | Update / delete a transaction |
-| GET | `/api/analytics/summary` | Current-month income, expense, balance |
-| GET | `/api/analytics/by-category` | Current-month expenses grouped by category |
-| GET | `/api/analytics/monthly` | Income vs. expense for the last 6 months |
-| GET | `/api/analytics/recent` | Last 5 transactions |
+| Method     | Endpoint                     | Description                                        |
+| ---------- | ---------------------------- | -------------------------------------------------- |
+| POST       | `/api/auth/register`         | Create an account, returns tokens                  |
+| POST       | `/api/auth/login`            | Authenticate, returns tokens                       |
+| POST       | `/api/auth/refresh`          | Exchange a refresh token for a new access token    |
+| POST       | `/api/auth/logout`           | Revoke a refresh token                             |
+| GET/POST   | `/api/categories`            | List / create categories                           |
+| PUT/DELETE | `/api/categories/:id`        | Update / delete a category                         |
+| GET/POST   | `/api/transactions`          | List (filterable, paginated) / create transactions |
+| PUT/DELETE | `/api/transactions/:id`      | Update / delete a transaction                      |
+| GET        | `/api/analytics/summary`     | Current-month income, expense, balance             |
+| GET        | `/api/analytics/by-category` | Current-month expenses grouped by category         |
+| GET        | `/api/analytics/monthly`     | Income vs. expense for the last 6 months           |
+| GET        | `/api/analytics/recent`      | Last 5 transactions                                |
 
 All routes except `/api/auth/*` require a `Bearer` access token and are scoped to the authenticated user.
 
@@ -200,7 +200,8 @@ All routes except `/api/auth/*` require a `Bearer` access token and are scoped t
 
 ---
 
-## Author
+## 👤 Author
 
 **Volodymyr Petryk**
-[linkedin.com/in/volodymyr-petryk](https://linkedin.com/in/volodymyr-petryk)
+
+[LinkedIn](https://linkedin.com/in/volodymyr-petryk) · [petryk.developer@gmail.com](mailto:petryk.developer@gmail.com)
